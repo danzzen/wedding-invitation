@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit & Shelly - Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8d5a3;
+            --gold-dark: #a07c2a;
+            --maroon: #7b2d3b;
+            --maroon-light: #9e3a4c;
+            --cream: #faf6ef;
+            --cream-dark: #f0e8d8;
+            --text-dark: #3d2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1520 50%, #1a0a0a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .invitation-wrapper {
+            max-width: 700px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .card {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(201, 168, 76, 0.3), 0 0 0 1px rgba(201, 168, 76, 0.2);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            margin: 8px;
+            pointer-events: none;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid var(--gold-light);
+            border-radius: 20px;
+            margin: 14px;
+            pointer-events: none;
+        }
+
+        /* Decorative corners */
+        .corner-decor {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 2;
+        }
+        .corner-decor::before, .corner-decor::after {
+            content: '';
+            position: absolute;
+            background: var(--gold);
+        }
+        .corner-tl { top: 18px; left: 18px; }
+        .corner-tr { top: 18px; right: 18px; }
+        .corner-bl { bottom: 18px; left: 18px; }
+        .corner-br { bottom: 18px; right: 18px; }
+
+        .corner-tl::before { top: 0; left: 0; width: 20px; height: 2px; }
+        .corner-tl::after { top: 0; left: 0; width: 2px; height: 20px; }
+        .corner-tr::before { top: 0; right: 0; width: 20px; height: 2px; }
+        .corner-tr::after { top: 0; right: 0; width: 2px; height: 20px; }
+        .corner-bl::before { bottom: 0; left: 0; width: 20px; height: 2px; }
+        .corner-bl::after { bottom: 0; left: 0; width: 2px; height: 20px; }
+        .corner-br::before { bottom: 0; right: 0; width: 20px; height: 2px; }
+        .corner-br::after { bottom: 0; right: 0; width: 2px; height: 20px; }
+
+        .content {
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* OM / Ganesh Symbol */
+        .divine-symbol {
+            font-size: 28px;
+            color: var(--maroon);
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .sanskrit {
+            font-size: 13px;
+            color: var(--gold-dark);
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .blessing {
+            font-size: 18px;
+            color: var(--maroon);
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .hosts {
+            font-size: 20px;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .invite-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .couple-section {
+            margin: 35px 0;
+            position: relative;
+        }
+
+        .name-groom, .name-bride {
+            font-family: 'Great Vibes', cursive;
+            font-size: 58px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+            margin: 5px 0;
+        }
+
+        .parent-info {
+            font-size: 14px;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .residence {
+            font-size: 13px;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            color: var(--maroon);
+            margin: 15px 0;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 300px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .divider-icon {
+            margin: 0 15px;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .date-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(123, 45, 59, 0.05));
+            border-radius: 15px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .date-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--maroon);
+            margin-bottom: 10px;
+        }
+
+        .date-main {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .date-day {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold-dark);
+        }
+
+        .closing-text {
+            font-size: 15px;
+            color: var(--text-dark);
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-top: 25px;
+        }
+
+        /* Schedule Section */
+        .schedule-card {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(201, 168, 76, 0.3), 0 0 0 1px rgba(201, 168, 76, 0.2);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            margin: 8px;
+            pointer-events: none;
+        }
+
+        .schedule-header {
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            padding: 20px;
+            text-align: center;
+        }
+
+        .schedule-header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 38px;
+            color: var(--gold-light);
+            font-weight: 400;
+        }
+
+        .schedule-content {
+            padding: 35px 40px;
+        }
+
+        .schedule-day {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .schedule-day:last-of-type {
+            border-bottom: none;
+            margin-bottom: 15px;
+            padding-bottom: 0;
+        }
+
+        .day-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--maroon);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .day-date {
+            font-size: 22px;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .event-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .event-name {
+            font-size: 17px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        .event-dots {
+            flex: 1;
+            border-bottom: 1px dotted var(--gold-light);
+            margin: 0 12px;
+            position: relative;
+            top: -3px;
+        }
+
+        .event-time {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 14px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .route-note {
+            background: linear-gradient(135deg, rgba(123, 45, 59, 0.08), rgba(201, 168, 76, 0.08));
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .route-note .label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--maroon);
+            margin-bottom: 5px;
+        }
+
+        .route-note .route {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .route-note .route span {
+            color: var(--gold-dark);
+            font-size: 20px;
+            margin: 0 8px;
+        }
+
+        /* RSVP Section */
+        .rsvp-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .rsvp-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--maroon);
+            margin-bottom: 10px;
+        }
+
+        .rsvp-names {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* Kids Section */
+        .kids-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(201, 168, 76, 0.06);
+            border-radius: 10px;
+        }
+
+        .kids-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            margin-bottom: 6px;
+        }
+
+        .kids-names {
+            font-size: 14px;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            padding: 20px 40px 30px;
+            font-size: 14px;
+            color: var(--gold-dark);
+            font-style: italic;
+        }
+
+        /* Floral accents */
+        .floral-top, .floral-bottom {
+            text-align: center;
+            font-size: 24px;
+            color: var(--gold);
+            letter-spacing: 8px;
+            opacity: 0.6;
+        }
+
+        .floral-top { margin-bottom: 15px; }
+        .floral-bottom { margin-top: 20px; }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .content { padding: 35px 25px; }
+            .schedule-content { padding: 25px 20px; }
+            .name-groom, .name-bride { font-size: 42px; }
+            .date-main { font-size: 26px; }
+            .schedule-header h2 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="invitation-wrapper">
+    <!-- Main Invitation Card -->
+    <div class="card">
+        <div class="corner-decor corner-tl"></div>
+        <div class="corner-decor corner-tr"></div>
+        <div class="corner-decor corner-bl"></div>
+        <div class="corner-decor corner-br"></div>
+
+        <div class="content">
+            <div class="floral-top">&#10053; &#10053; &#10053;</div>
+
+            <div class="divine-symbol">!! Shri Ganeshay Namah !!</div>
+            <div class="sanskrit">
+                &#x0950; मंगलम् भगवान विष्णुमंगलम् गरुड़ध्वज: ।<br>
+                मंगलम् पुण्डरीकाक्ष मंगलायस्तनों हरि !!
+            </div>
+
+            <div class="blessing">With Heavenly Blessing</div>
+
+            <div class="hosts">Smt. Santra Devi & Sh. Amar Singh Yadav</div>
+            <div class="invite-text">
+                Request the pleasure of your benign presence<br>
+                on the auspicious occasion of the wedding ceremony<br>
+                of their beloved Grand Son
+            </div>
+
+            <div class="couple-section">
+                <div class="name-groom">Mohit</div>
+                <div class="parent-info">S/o Smt. Munesh & Shri Virendra Singh Yadav</div>
+                <div class="residence">R/o Mohalla Manpura, Behror (Kotputli-Behror), Raj.</div>
+
+                <span class="ampersand">&amp;</span>
+
+                <div class="name-bride">Shelly</div>
+                <div class="parent-info">D/o Smt. Neelam & Sh. Pramod Kumar ji</div>
+                <div class="residence">R/o Ludhiana, Punjab</div>
+            </div>
+
+            <div class="divider">
+                <span class="divider-icon">&#10022;</span>
+            </div>
+
+            <div class="date-section">
+                <div class="date-label">Save the Date</div>
+                <div class="date-main">25 April 2026</div>
+                <div class="date-day">Saturday</div>
+            </div>
+
+            <div class="closing-text">
+                As per the programme, you are cordially invited<br>
+                to shower your blessings and good wishes<br>
+                on the wedding couple.
+            </div>
+
+            <div class="divider">
+                <span class="divider-icon">&#10022;</span>
+            </div>
+
+            <div class="rsvp-section">
+                <div class="rsvp-label">R.S.V.P.</div>
+                <div class="rsvp-names">
+                    Rohitash Jagirdar<br>
+                    Maduram Retd. P.T.I<br>
+                    Krishan Kumar Yadav
+                </div>
+            </div>
+
+            <div class="floral-bottom">&#10053; &#10053; &#10053;</div>
+        </div>
+    </div>
+
+    <!-- Schedule Card -->
+    <div class="schedule-card">
+        <div class="schedule-header">
+            <h2>Golden Moments</h2>
+        </div>
+
+        <div class="schedule-content">
+            <!-- Day 1 -->
+            <div class="schedule-day">
+                <div class="day-title">Day One</div>
+                <div class="day-date">Tuesday, 21 April 2026</div>
+                <div class="event-row">
+                    <span class="event-name">Bhaat</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">03:15 PM</span>
+                </div>
+                <div class="event-row">
+                    <span class="event-name">Lagan</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">06:15 PM</span>
+                </div>
+                <div class="event-row">
+                    <span class="event-name">Dinner</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">07:15 PM</span>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="schedule-day">
+                <div class="day-title">Day Two</div>
+                <div class="day-date">Thursday, 23 April 2026</div>
+                <div class="event-row">
+                    <span class="event-name">Ladies Sangeet</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">04:15 PM</span>
+                </div>
+                <div class="event-row">
+                    <span class="event-name">Chak</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">06:15 PM</span>
+                </div>
+            </div>
+
+            <!-- Day 3 - Wedding -->
+            <div class="schedule-day">
+                <div class="day-title">Wedding Day</div>
+                <div class="day-date">Saturday, 25 April 2026</div>
+                <div class="event-row">
+                    <span class="event-name">Nikashi</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">07:15 AM</span>
+                </div>
+                <div class="event-row">
+                    <span class="event-name">Departure of Baarat</span>
+                    <span class="event-dots"></span>
+                    <span class="event-time">08:15 AM</span>
+                </div>
+            </div>
+
+            <!-- Route Note -->
+            <div class="route-note">
+                <div class="label">Baarat Route</div>
+                <div class="route">
+                    Mohalla Manpura, Behror <span>&#10140;</span> Ludhiana, Punjab
+                </div>
+            </div>
+
+            <!-- Kids -->
+            <div class="kids-section">
+                <div class="kids-label">Baal Manuhaar</div>
+                <div class="kids-names">
+                    Navya, Riddhi, Rishabh, Pragti, Vanya, Devisha, Dharvik & Duggu
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Ladies are also cordially invited by this card
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
